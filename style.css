@@ -1,0 +1,16 @@
+*{
+    border: 1px solid red;
+}
+
+/*soy un comment*/
+body{background-color: yellow;}
+
+#titular{color: #246547;font-size: 100px;}
+
+.elemento{
+    color: white
+}
+
+.margenes{
+    margin: 50px;
+}
