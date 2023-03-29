@@ -14,3 +14,14 @@ body{background-color: yellow;}
 .margenes{
     margin: 50px;
 }
+
+li {
+    float: left;
+}
+
+li a{
+    display: block;
+    padding: 8px;
+    background-color: whitesmoke;
+
+}
