@@ -1,27 +1,142 @@
 *{
-    border: 1px solid red;
+    margin: 2vw;
 }
+
+
+.carousel{
+  display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.fotos1c{
+  height: 40vw;
+  width: 40vw;
+}
+
+.fotos2{
+  height: 20vw;
+  width: 20vw;
+}
+
+nav {
+    
+    background-color: #222;
+    height: 6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  li {
+    margin: 1vw;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2vw;
+    font-weight: bold;
+  }
+  
+
+
+
+.contenedor{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    
+}
+  
+
+
+  
+
+.h1 {
+    display: flex;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+     color: black;
+     font-size: 8vw;
+    }   
+
+
 
 /*soy un comment*/
-body{background-color: yellow;}
+body{background-color: rgb(230, 228, 177);}
 
-#titular{color: #246547;font-size: 100px;}
 
-.elemento{
-    color: white
+
+.p1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 1.5vw;
+    border: 0.25vw solid black;
+    background-color:rgb(216, 213, 128);
+    padding: 0,5vw;
+
 }
+
+.divtit{
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    border: rgb(230, 228, 177);
+    border-width: 0.5vw;
+}
+
+    
+
+
 
 .margenes{
-    margin: 50px;
+    margin: 4vw;
 }
 
-li {
-    float: left;
-}
+footer {
+    background-color: #222;
+    color: #fff;
+    height: 6vw;
+    padding: 2vw;
+    text-align: center;
+    font-size: 1vw;
+  }
+  
+  footer a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+@media screen and (max-width:768px){
+  .h1{
+    font-size: 8vw;
+  }
+  .p1{
+    font-size: 2vw;
+  }
+  li{
+    margin: 0.02vw;
+  }
 
-li a{
-    display: block;
-    padding: 8px;
-    background-color: whitesmoke;
+  img{
+    height:25vw ;
+  }
+
+
+
 
 }
+  
+  
