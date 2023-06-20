@@ -1,44 +1,88 @@
-let array1= [1,2,3]
+// Obtener referencia a los botones de compra
+var botonesComprar = document.getElementsByClassName('btn-comprar');
 
-console.log(array1)
-console.log(array[0]);
-
-const ARRAY2 = [1]
-
-//Metodos de Array
-//pop: Elimina el último elemento
-array1.pop()
-
-//push: Añade un elemento al array
-
-array1.push(3,14)
-//shift: Elimina el primer elemento del array
-//unshift: Agrega un elemento al principio del array
-//indexOf: Indica la posicion del elemento que este buscando
-//find: puedo encontrar un valor que cumpla con una condición específica
-
-let a= 0
-
-while(a>1){
-    console.log(a);console.log(b);
+// Agregar evento de clic a los botones de compra
+for (var i = 0; i < botonesComprar.length; i++) {
+  botonesComprar[i].addEventListener('click', agregarAlCarrito);
 }
 
-let result = '';
-let i = 0;
+// Carrito de compras
+var carrito = [];
 
-do {
-  i = i + 1;
-  result = result + i;
-} while (i < 5);
 
-console.log(result);
-// Expected output: "12345"
+function agregarAlCarrito() {
+  var producto = {
+    nombre: this.parentNode.querySelector('p').textContent,
+    precio: parseFloat(this.parentNode.querySelector('.precio').textContent.slice(1)),
+    cantidad: 1
+  };
 
-for (let x=0; x<10; x++){
-    console.log(x);
+  // Verificar si el producto ya está en el carrito
+  var productoExistente = carrito.find(function(item) {
+    return item.nombre === producto.nombre;
+  });
+
+  if (productoExistente) {
+    
+    productoExistente.cantidad++;
+  } else {
+    
+    carrito.push(producto);
+  }
+
+  actualizarCarrito();
 }
 
-let pantriste = [0,1,2,3]
-for(let x=0;x>4;x++){
-    console.log(pantriste[x])
+// Función para actualizar el carrito
+function actualizarCarrito() {
+  var carritoBody = document.getElementById('carrito-body');
+  var totalCarrito = document.getElementById('total-precio');
+  var vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+
+  carritoBody.innerHTML = '';
+  totalCarrito.textContent = '$0';
+
+  for (var i = 0; i < carrito.length; i++) {
+    var producto = carrito[i];
+    var precioTotal = producto.precio * producto.cantidad;
+
+    var fila = document.createElement('tr');
+    fila.innerHTML = `
+      <td>${producto.nombre}</td>
+      <td>$${producto.precio}</td>
+      <td>${producto.cantidad}</td>
+      <td>$${precioTotal}</td>
+      <td><button class="btn-eliminar" data-indice="${i}">Eliminar</button></td>
+    `;
+
+    carritoBody.appendChild(fila);
+  }
+
+  var total = carrito.reduce(function(acc, producto) {
+    return acc + producto.precio * producto.cantidad;
+  }, 0);
+
+  totalCarrito.textContent = '$' + total.toFixed(2);
+
+  vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
+  var botonesEliminar = document.getElementsByClassName('btn-eliminar');
+  for (var j = 0; j < botonesEliminar.length; j++) {
+    botonesEliminar[j].addEventListener('click', eliminarProducto);
+  }
 }
+
+
+function vaciarCarrito() {
+  carrito = [];
+  actualizarCarrito();
+}
+
+
+function eliminarProducto() {
+  var indice = parseInt(this.dataset.indice);
+  carrito.splice(indice, 1);
+  actualizarCarrito();
+}
+
+// Inicializar el carrito
+actualizarCarrito();
